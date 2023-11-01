@@ -1,4 +1,4 @@
-import Delete from "../../../components/RemoveBtn"
+import Delete from "../components/RemoveBtn"
 
 const getTopics = async () => {
     try {

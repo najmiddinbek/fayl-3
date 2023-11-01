@@ -14,7 +14,7 @@ const getTopics = async () => {
         return res.json();
     } catch (error) {
         console.log("Error loading topics: ", error);
-        throw error; // Hatanın yeniden fırlatılması
+        throw error; // Rethrowing the error
     }
 };
 
@@ -42,7 +42,7 @@ export default async function page() {
             <h1 className='poppins text-3xl font-bold'>Chortoq tumanidagi barcha maktablar</h1>
             <>
                 <div className='w-full h-[10px] bg-transparent rounded-xl'></div>
-                <Link href={"/schools/28-maktab"}>
+                <Link href={"/28-maktab"}>
                     <div className='max-w-[1400px] mx-auto w-full shadow-md p-3 bg-white rounded-md flex justify-between items-center h-full'>
                         <p className='text-[18px] poppins'>
                             28-maktab

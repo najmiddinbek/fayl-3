@@ -10,10 +10,6 @@ import Image from "next/image";
 import LoginImage from "../public/5790719 1.jpg";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
-import SecondNavbar from "./SecondNavbar"
-
-const clientId = '489518411118 - clorus1ieqddeiappaf6lod37oscnl6o.apps.googleusercontent.com'
-const clientSecret = ' GOCSPX2wbY5qnUXMl725FyOx11ZKFmHB35'
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
