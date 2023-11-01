@@ -1,4 +1,3 @@
-import RemoveBtn from "../../../components/RemoveBtn";
 import Delete from "../../../components/RemoveBtn"
 
 const getTopics = async () => {
@@ -13,8 +12,11 @@ const getTopics = async () => {
         return res.json();
     } catch (error) {
         console.log("Error loading topics: ", error);
+        throw error
     }
 };
+
+
 
 
 export default async function TopicsList() {
@@ -45,20 +47,18 @@ export default async function TopicsList() {
                         </tr>
                     </thead>
                     {mavzula.map((t, index) => (
-                        <>
-                            <tbody key={t.id} className="text-center">
-                                <tr className={`${getRowBackgroundColor(index)}`}>
-                                    <td className={`px-2 py-4 `}>{index + 1}</td>
-                                    <td className={`px-2 py-4 `}>{t.shaxs}</td>
-                                    <td className={`px-2 py-4 `}>{t.maktab}</td>
-                                    <td className={`px-2 py-4 `}>{t.sinf}</td>
-                                    <td className={`px-2 py-4 `}>{new Date(t.createdAt).toLocaleString()}</td>
-                                    <td>
-                                        <Delete id={t.id} />
-                                    </td>
-                                </tr>
-                            </tbody >
-                        </>
+                        <tbody key={t.id} className="text-center">
+                            <tr className={`${getRowBackgroundColor(index)}`}>
+                                <td className={`px-2 py-4 `}>{index + 1}</td>
+                                <td className={`px-2 py-4 `}>{t.shaxs}</td>
+                                <td className={`px-2 py-4 `}>{t.maktab}</td>
+                                <td className={`px-2 py-4 `}>{t.sinf}</td>
+                                <td className={`px-2 py-4 `}>{new Date(t.createdAt).toLocaleString()}</td>
+                                <td>
+                                    <Delete id={t.id} />
+                                </td>
+                            </tr>
+                        </tbody>
                     ))}
                 </table >
             </div >

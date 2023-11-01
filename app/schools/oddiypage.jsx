@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { HiPencilAlt } from "react-icons/hi";
+import { useEffect, useState } from "react";
 
 const getTopics = async () => {
     try {
@@ -13,14 +12,28 @@ const getTopics = async () => {
         return res.json();
     } catch (error) {
         console.log("Error loading topics: ", error);
+        throw error;
     }
 };
 
+export default function TopicsList() {
+    const [mavzula, setMavzula] = useState([]);
 
-export default async function TopicsList() {
-    const a = await getTopics()
-    const mavzula = a?.mavzula
-    const maktablar = Array.from({ length: 54, }, (_, index) => index + 1);
+    useEffect(() => {
+        const fetchTopics = async () => {
+            try {
+                const data = await getTopics();
+                setMavzula(data?.mavzula);
+            } catch (error) {
+                console.log("Error loading topics: ", error);
+            }
+        };
+
+        fetchTopics();
+    }, []);
+
+    const maktablar = Array.from({ length: 54 }, (_, index) => index + 1);
+
     return (
         <>
             {mavzula.map((topic, index) => (
